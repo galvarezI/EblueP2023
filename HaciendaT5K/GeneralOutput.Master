@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="GeneralOutput.master.cs" Inherits="Eblue.GeneralOutput" %>
+
+<!DOCTYPE html PUBLIC "­//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1­transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>E-BLUE</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <!-- Data Tables  ~/plugins/datatables/dataTables.bootstrap4.min.css-->
+    <link rel="stylesheet" href="~/plugins/datatables/dataTables.bootstrap4.min.css" />
+
+    <!-- Theme style version ~1.a1.0 "~/dist/css/adminlte.min.css"  ~/dist/css/adminlte.min.css-->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css" />
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body onload="window.print();">
+<div class="wrapper">
+    <asp:ContentPlaceHolder ID="bodycontent" runat="server">
+    </asp:ContentPlaceHolder>
+</div>
+<!-- ./wrapper -->
+</body>
+</html>

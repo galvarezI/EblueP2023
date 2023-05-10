@@ -1,0 +1,649 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="General.master.cs" Inherits="Eblue.General" %>
+
+<%--<!DOCTYPE html>
+<html>--%>
+<!DOCTYPE html PUBLIC "­//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1­transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="height: auto;">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Estación Experimental Agrícola</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <!-- Data Tables  ~/plugins/datatables/dataTables.bootstrap4.min.css-->
+    <link rel="stylesheet" href="~/plugins/datatables/dataTables.bootstrap4.min.css" />
+
+    <!-- Theme style version ~1.a1.0 "~/dist/css/adminlte.min.css"  ~/dist/css/adminlte.min.css
+        adminlte.min-Copy.css
+        -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/dist/css/pivot.css" />
+    <style>
+       .editabledialog {
+  border: 2px solid #f39389;
+  border-radius: 2px;
+  padding: 10px;
+  position: absolute;
+  background-color: #fbd8d4;
+  color: #3b3c40;
+}
+
+    </style>
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<%--style="height: auto;"--%>
+
+<%--    
+    
+    for prevent autopostback when press enter in textbox
+    <body class="sidebar-mini" onkeydown="return (event.keyCode!=13)">
+    
+    --%>
+<body class="sidebar-mini" style="height: auto;">
+    <%--<form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>--%>
+
+    <div class="wrapper">
+        <form id="MainForm" name="MainForm" runat="server">
+            <!-- Navbar -->
+            <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+                    </li>
+
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a href="<%= this.ResolveClientUrl("~/Dashboard.aspx") %>" class="nav-link">Dashboard</a>
+
+
+                    </li>
+                  <%--  <li class="nav-item d-none d-sm-inline-block"  style="display:none !important">
+                        <a href="../../index3.html" class="nav-link">Home</a>
+                    </li>--%>
+
+                    <li class="nav-item d-none d-sm-inline-block"  style="display:none !important">
+                        <a href="#" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- SEARCH FORM -->
+                <%--<form class="form-inline ml-3">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-navbar" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>--%>
+
+                <!-- Right navbar links -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <%--<asp:LinkButton OnClick="btnSignOut_Click" ID="btnSignOut" runat="server" ToolTip="sign out" CssClass="nav-link" Text="here SignOut" >
+                            <i class="fa fa-sign-out"></i>
+                        </asp:LinkButton>
+                            
+                                <a style="display:none !important" class="nav-link" href="<%= this.ResolveClientUrl("~/SignOut.aspx") %>" title="sign out"><i class="fa fa-sign-out"></i></a>
+                   
+                            --%>
+                        <a  class="nav-link" href="<%= this.ResolveClientUrl("~/SignOut.aspx") %>" title="sign out"><i class="fa fa-sign-out"></i></a>
+                    </li>
+                    <a href="PreviewPage.aspx">PreviewPage.aspx</a>
+                    <!-- Messages Dropdown Menu -->
+                    <li class="nav-item dropdown" style="display:none">
+                        <a class="nav-link" data-toggle="dropdown" href="#">
+                            <i class="fa fa-comments-o"></i>
+                            <span class="badge badge-danger navbar-badge">3</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right"  style="display:none">
+                            <a href="#" class="dropdown-item">
+                                <!-- Message Start -->
+                                <div class="media">
+                                    <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                                    <div class="media-body">
+                                        <h3 class="dropdown-item-title">Brad Diesel
+                  <span class="float-right text-sm text-danger"><i class="fa fa-star"></i></span>
+                                        </h3>
+                                        <p class="text-sm">Call me whenever you can...</p>
+                                        <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i>4 Hours Ago</p>
+                                    </div>
+                                </div>
+                                <!-- Message End -->
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <!-- Message Start -->
+                                <div class="media">
+                                    <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                    <div class="media-body">
+                                        <h3 class="dropdown-item-title">John Pierce
+                  <span class="float-right text-sm text-muted"><i class="fa fa-star"></i></span>
+                                        </h3>
+                                        <p class="text-sm">I got your message bro</p>
+                                        <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i>4 Hours Ago</p>
+                                    </div>
+                                </div>
+                                <!-- Message End -->
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <!-- Message Start -->
+                                <div class="media">
+                                    <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                    <div class="media-body">
+                                        <h3 class="dropdown-item-title">Nora Silvester
+                  <span class="float-right text-sm text-warning"><i class="fa fa-star"></i></span>
+                                        </h3>
+                                        <p class="text-sm">The subject goes here</p>
+                                        <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i>4 Hours Ago</p>
+                                    </div>
+                                </div>
+                                <!-- Message End -->
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                        </div>
+                    </li>
+                    <!-- Notifications Dropdown Menu -->
+                    <li class="nav-item dropdown"  style="display:none">
+                        <a class="nav-link" data-toggle="dropdown" href="#">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="badge badge-warning navbar-badge">15</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                            <span class="dropdown-item dropdown-header">15 Notifications</span>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <i class="fa fa-envelope mr-2"></i>4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <i class="fa fa-users mr-2"></i>8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <i class="fa fa-file mr-2"></i>3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"  style="display:none">
+                        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
+                            <i class="fa fa-th-large"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.navbar -->
+
+            <!-- Main Sidebar Container -->
+            <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height: 568px;">
+                <!-- Brand Logo -->
+                <a href="#" class="brand-link">
+                   
+                    <img src="<%= this.ResolveClientUrl("~/dist/img/EBlogo.png") %>"  class="brand-image img-circle elevation-3" style="width: 48px;height: 128px; border-radius: 0 !important;">
+                    <img src="<%= this.ResolveClientUrl("~/dist/img/EElogo.png") %>"  class="brand-image img-circle elevation-3" style="width: 48px;height: 128px;border-radius: 0 !important;">
+                    <span class="brand-text font-weight-light">EEA</span>
+                </a>
+
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Sidebar user (optional) ../../dist/img/user2-160x160.jpg -->
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div class="image">
+                            <img   <%= string.Format("src='{0}'", (string.IsNullOrEmpty(this.GetRosterPicture()) ? this.ResolveClientUrl("~/dist/img/userGeneric-160x160.jpg") : this.GetRosterPicture() ) ) %>  class="img-circle elevation-2" alt="User Image">
+                        </div>
+                        <div class="info">
+                            
+                            <a href="#" class="d-block" title="<%= this.GetRosterCaption() %>"><%= this.GetRosterName() %>
+
+                            </a>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Menu -->
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                          <%--  <li class="nav-item has-treeview">
+                                <a href="<%= this.ResolveClientUrl("~/Home.aspx") %>" class="nav-link <%= this.HomeStyle() %>">
+                                    <i class="nav-icon fa fa-circle-o"></i>
+                                    <p>
+                                        Home
+                                       
+                                    </p>
+                                </a>
+                            </li>--%>
+
+                            <li class="nav-item has-treeview">
+                                <a href="<%= this.ResolveClientUrl("~/project/whichiparticipate.aspx") %>" class="nav-link <%= this.WIpStyle() %>">
+                                    <i class="nav-icon fa fa-circle-o"></i>
+                                    <p> 
+                                        My Projects
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item has-treeview menu-open" style="display:none">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fa fa-dashboard"></i>
+              <p>
+                Dashboard
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Dashboard v1</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./index2.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Dashboard v2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./index3.html" class="nav-link active">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Dashboard v3</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+                            <%= this.GetSideBarMenu() %>
+
+
+                            <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                            
+                        </ul>
+                    </nav>
+                    <!-- /.sidebar-menu -->
+                </div>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div class="float-right d-none d-sm-block">
+                    <b>Version</b> 1.0.0-alpha
+                </div>
+                <strong>Copyright © 2020-2021 <a href="http://www.infosyp.com/">Infosyp</a>.</strong> All rights
+    reserved.
+                
+            </footer>
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+                <div class="p-3">
+                    <h5>Customize AdminLTE</h5>
+                    <hr class="mb-2">
+                    <h6>Navbar Variants</h6>
+                    <div class="d-flex">
+                        <div class="d-flex flex-wrap mb-3">
+                            <div class="bg-primary elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                            <div class="bg-info elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                            <div class="bg-success elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                            <div class="bg-danger elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                            <div class="bg-warning elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                            <div class="bg-white elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                            <div class="bg-gray-light elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <input type="checkbox" value="1" checked="checked" class="mr-1"><span>Navbar border</span>
+                    </div>
+                    <h6>Dark Sidebar Variants</h6>
+                    <div class="d-flex"></div>
+                    <div class="d-flex flex-wrap mb-3">
+                        <div class="bg-primary elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-warning elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-info elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-danger elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-success elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                    </div>
+                    <h6>Light Sidebar Variants</h6>
+                    <div class="d-flex"></div>
+                    <div class="d-flex flex-wrap mb-3">
+                        <div class="bg-primary elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-warning elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-info elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-danger elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-success elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                    </div>
+                    <h6>Brand Logo Variants</h6>
+                    <div class="d-flex"></div>
+                    <div class="d-flex flex-wrap mb-3">
+                        <div class="bg-primary elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-info elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-success elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-danger elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-warning elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-white elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <div class="bg-gray-light elevation-2" style="width: 40px; height: 20px; border-radius: 25px; margin-right: 10px; margin-bottom: 10px; opacity: 0.8; cursor: pointer;"></div>
+                        <a href="javascript:void(0)">clear</a>
+                    </div>
+                </div>
+            </aside>
+            <!-- /.control-sidebar -->
+            <!-- jQuery ../plugins/jquery/jquery.min.js 
+                ~/plugins/jquery/jquery.min-Copy.js
+                -->
+            <script src="<%= this.ResolveClientUrl("~/plugins/jquery/jquery.min.js") %>"></script>
+
+            <!-- jQuery UI 1.11.4 
+                https://code.jquery.com/ui/1.12.1/jquery-ui.min.js
+                -->
+
+            <%--
+                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+                <script src="<%= this.ResolveClientUrl("~/plugins/jqueryui/jquery-ui.min.js") %>"></script>
+                
+                --%>
+            <script src="<%= this.ResolveClientUrl("~/plugins/jqueryui/jquery-ui.min.js") %>"></script>
+
+            <!-- AdminLTE App ver.a3.0 Direct Chat -->
+            
+            <%--<script src="<%= this.ResolveClientUrl("~/dist/js/DirectChat.js") %>"></script>--%>
+
+            <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+            <script>
+                $.widget.bridge('uibutton', $.ui.button);
+
+                // Make the dashboard widgets sortable Using jquery UI
+                //$('.connectedSortable').sortable({
+                //    placeholder: 'sort-highlight',
+                //    connectWith: '.connectedSortable',
+                //    handle: '.card-header, .nav-tabs',
+                //    forcePlaceholderSize: true,
+                //    zIndex: 999999
+                //});
+
+                //$('.connectedSortable .card-header, .connectedSortable .nav-tabs-custom').css('cursor', 'move');
+            </script>
+
+            
+
+            <!-- Bootstrap 4 ../plugins/bootstrap/js/bootstrap.bundle.min.js-->
+            <script src="<%= this.ResolveClientUrl("~/plugins/bootstrap/js/bootstrap.bundle.min.js") %>"></script>
+            <!-- Data Tables ../plugins/datatables/jquery.dataTables.min.js   ../plugins/datatables/dataTables.bootstrap4.min.js-->
+            <script src="<%= this.ResolveClientUrl("~/plugins/datatables/jquery.dataTables.min.js") %>"></script>
+            <script src="<%= this.ResolveClientUrl("~/plugins/datatables/dataTables.bootstrap4.min.js") %>"></script>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+
+            <!-- Bootstrap WYSIHTML5 
+                 src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"
+                -->
+            <script src="<%= this.ResolveClientUrl("~/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js") %>"></script>
+
+            <!-- SlimScroll ../plugins/slimScroll/jquery.slimscroll.min.js-->
+            <script src="<%= this.ResolveClientUrl("~/plugins/slimScroll/jquery.slimscroll.min.js") %>"></script>
+            <!-- FastClick  ../plugins/fastclick/fastclick.js-->
+            <script src="<%= this.ResolveClientUrl("~/plugins/fastclick/fastclick.js") %>"></script>
+
+            <%--<script src="/docs/3.0/assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>--%>
+            <script src="<%= this.ResolveClientUrl("~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js") %>"></script>
+            <!-- AdminLTE App ver.a3.0 -->
+            <%--<script src="../dist/js/adminlte.min.js"></script>
+                adminlte.min-Copy.js
+                --%>
+            <script src="<%= this.ResolveClientUrl("~/dist/js/adminlte.min.js") %>"></script>
+            <!-- AdminLTE for demo purposes ../dist/js/demo.js-->
+            <script src="<%= this.ResolveClientUrl("~/dist/js/demo.js") %>"> </script>
+
+            <script src="<%= this.ResolveClientUrl("~/dist/js/pivot.js") %>"> </script>
+            
+            <script>
+
+
+                // Make the dashboard widgets sortable Using jquery UI
+                $('.connectedSortable').sortable({
+                    placeholder: 'sort-highlight',
+                    connectWith: '.connectedSortable',
+                    handle: '.card-header, .nav-tabs',
+                    forcePlaceholderSize: true,
+                    zIndex: 999999
+                });
+
+                $('.connectedSortable .card-header, .connectedSortable .nav-tabs-custom').css('cursor', 'move');
+            </script>
+            <script type="text/javascript">
+
+                // This example is the most basic usage of pivotUI()
+                var headItem = { color: "", shape: "", index: 0, key: "", tag: "" };
+
+                var dataItemSet = new Set;
+                var dataRowSet = new Set;
+                var dataColSet = new Set;
+                var headItemSet = new Set;
+                var colsItemSet = new Set;
+                var rowsItemSet = new Set;
+                var customData = false;
+
+                var varthead = {
+                    items: [
+                        { color: "blue", shape: "circle", index: 1, key: "one", tag: "base", data: "class" },
+                        { color: "red", shape: "triangle", index: 2, key: "two", tag: "default", data: "struct" },
+                        { color: "red", shape: "circle", index: 3, key: "six", tag: "this", data: "enum" }
+                    ]
+                };
+
+                var vartbody = {
+                    rows: ["color", "key"], cols: ["index", "shape", "tag"]
+                };
+
+                var store = function () {
+
+                    return {
+                        storeItem: function storeItem() {
+                            var record = { color: "", shape: "", index: 0, key: "", tag: "" };
+                            //this = record;
+                            var kind = "store-record";
+                            this.kind = kind;
+                            return record;
+                        }
+                    };
+                }
+
+                //$(function () {
+                //    initpivot();
+                //});
+
+                function initpivot() {
+                    headItemSet.add("color"); headItemSet.add("shape"); headItemSet.add("index"); headItemSet.add("key"); headItemSet.add("tag");
+                    headItemSet.add("data");
+                    rowsItemSet.add("color"); rowsItemSet.add("key"); rowsItemSet.add("tag");
+                    colsItemSet.add("index"); colsItemSet.add("shape");
+                    //colsItemSet.add("tag");
+
+                    dataItemSet.add({ color: "blue", shape: "circle", index: 1, key: "one", tag: "base", data: "class" });
+                    dataItemSet.add({ color: "red", shape: "triangle", index: 2, key: "two", tag: "default", data: "struct" });
+                    dataItemSet.add({ color: "red", shape: "circle", index: 3, key: "six", tag: "this", data: "enum" });
+
+                    customData = true;
+
+                    bindpivot();
+                }
+
+                function getarrayFromSet(tag) {
+
+                    let arraydata = Array.from(tag);
+                    return arraydata;
+                }
+
+                function bindpivot() {
+                    binddata($("#output"));
+                }
+                function binddata(tag) {
+                    var data = getdata(customData);
+
+                    setpivot(tag, data.thead, data.tbody);
+                }
+
+                function setpivot(tag, lthead, ltbody) {
+                    $(tag).pivotUI(
+                        lthead,
+                        ltbody
+                    );
+
+                }
+
+                function getdata(flagdata) {
+                    var iscustomdata = flagdata || customData;
+                    var result;
+
+                    if (iscustomdata) {
+                        var dataitems = getarrayFromSet(dataItemSet);
+                        var datarows = getarrayFromSet(rowsItemSet);
+                        var datacols = getarrayFromSet(colsItemSet);
+
+                        varthead.items = dataitems;
+                        vartbody.rows = datarows;
+                        vartbody.cols = datacols;
+                    }
+
+                    result = { thead: varthead.items, tbody: vartbody };
+
+                    return result;
+
+                }
+
+                function addRowField(value) {
+                    rowsItemSet.add(value);
+                    customData = true;
+                    refresh();
+                }
+                function addColField(value) {
+                    colsItemSet.add(value);
+                    customData = true;
+                    refresh();
+                }
+                function addData(tag) {
+                    //{color: "blue", shape: "circle", index: 1, key: "one", tag:"base"},
+                    var properties = getarrayFromSet(headItemSet);
+                    var idxs = properties.length;
+                    var constraint = true;
+                    for (var idx = 0; idx < idxs; idx++) {
+                        var hasNotfield = !(properties[idx] in tag);
+                        if (hasNotfield) {
+                            constraint = false;
+                            break;
+                        }
+
+                    }
+
+                    if (constraint) {
+                        dataItemSet.add(tag);
+                        customData = true;
+                        refresh();
+                    }
+
+                }
+
+                function refresh() {
+                    bindpivot();
+
+                }
+
+        </script>
+            <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+            <%--<script src="<%= this.ResolveClientUrl("~/dist/js/pages/dashboard.js") %>"> </script>--%>
+
+            <%--comments
+                
+                --%>
+           <script>
+
+               var warningTimeout;
+               var warningBox = document.createElement("div");
+               warningBox.className = "editabledialog";
+
+               function displayWarning(ctrl,msg) {
+                   warningBox.innerHTML = msg;
+
+                   if (document.body.contains(warningBox)) {
+                       window.clearTimeout(warningTimeout);
+                   } else {
+                       // insert warningBox after myTextbox
+                       ctrl.parentNode.insertBefore(warningBox, ctrl.nextSibling);
+                   }
+
+                   warningTimeout = window.setTimeout(function () {
+                       warningBox.parentNode.removeChild(warningBox);
+                       warningTimeout = -1;
+                   }, 2000);
+               }
+
+               var options = document.querySelectorAll('select');
+               options.forEach(
+                   (one,two,opt)=> settingeditable(one,two,opt)
+                                 );
+               function settingeditable(...exps) {
+                   console.log(exps[0] + ', ' + exps[1] + ', ' + exps[2]);
+                   exps[0].addEventListener('mouseover', function () {
+                       setTimeout(() => {
+                           displayWarning(exps[0],'enter the content')
+                       }, 2000);
+                   }, false);
+                   /*
+                    
+                    function (currentValue, currentIndex, listObj) {
+                       displayWarning(currentValue,'replace the content')
+                       console.log(currentValue + ', ' + currentIndex + ', ' + this);
+                   },
+                   'miEsteArg'
+
+                    */
+               }
+               //var myTextbox = document.getElementById('my-textbox');
+               function checkName(evt) {
+                   /*var charCode = evt.charCode;
+                   if (charCode != 0) {
+                       if (charCode < 97 || charCode > 122) {*/
+                           evt.preventDefault();
+                   displayWarning(
+                       '<h1>Estación Experimental Agrícola</h1>                               < p class= \"normal\" > Deployment Application(In Progress).</p ><p class=\"small\">Currently we are working for the next release.</p>'
+                   );/*    );
+                       }*/
+                   //}
+               }
+
+
+           </script>
+        </form>
+    </div>
+
+
+</body>
+</html>

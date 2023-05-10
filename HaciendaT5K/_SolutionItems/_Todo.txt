@@ -1,0 +1,97 @@
+Refactoring
+	- WebFormPage(like master : masterpageBasic)
+		-
+		-
+	- PageBasic : webformPage
+
+Log
+	- request metada info
+
+Login
+	- log request 
+	- log restrict access
+	- block user when try more ? times
+
+
+WebForm
+ - Log {}
+ - 
+
+PageBasic
+ - like default, signOut
+
+
+
+PageGeneral
+ - like home, whichIparticipage, unAuthorizeRoute
+
+PageModel
+
+PageList
+ - divFilter(s)
+
+ - divRecord(s)
+
+PageListBlop : pageList, like whichIparticipate
+
+
+PageForm
+ - divForm  
+		-> uid, name, description
+		-> add, clear
+ - divTable
+		-> uid, name, description
+		-> goto, edit.update, remove.delete
+
+
+PageFormBlop
+ - like 
+	projectList, 
+	roles, rolesType
+	rosters, rostersType
+
+
+PageView
+
+
+PageViewList
+
+PageViewAdd
+
+PageViewEdit
+
+PageViewDetail
+
+
+
+
+
+PageWorkFlow
+	-CardShips -> roster-role-type, #assents, #objetions
+	-CardStatus
+	-CardAssents, CardObjetions
+	-CardNotes, CardSigns
+	-CardList(s) -> only add from divList.Model, edit.update|remove.delete| from divGrid.Model
+	-CardData(s) -> only save from divData.Model
+	-CardDataList(s) -> save from divData.Model, add from divList.Model, edit.update|remove.delete| from divGrid.Model
+
+PageWorkFlowCrud
+ - like 
+	projectTemplate, 
+	researchTemplate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
